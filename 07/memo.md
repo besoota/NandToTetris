@@ -1,2 +1,17 @@
 VMコードをアセンブリに変換する変換器を実装する
 
+- vm_parser.py
+  - .vmを読み込み, 空白やコメントなどを消す。
+  - VMコマンドをsolit()でスペース区切りで分解し, リストで保持する
+  - command_type()で, コマンドをC_ARITHMETIC, C_PUSH, C_POP に分類する
+  - arg1() で、コマンドの第1引数（算術なら add など、メモリアクセスなら local などのセグメント名）を返す
+  - arg2() で、コマンドの第2引数（Push/Popする際のインデックス番号）を整数型（int）に変換して返す。
+
+- vm_code.py
+  - 受け取ったVMコマンドをアセンブリへ変換してファイルに書き込む。
+  - setFileName()でファイル名を保持し, staticセグメントで唯一のシンボル名として利用する
+  - writeArithmetic() で算術・論理演算を実装
+  - writePushPop() でスタックと各種セグメント間のデータのやり取りを実装する
+  - local や argument は LCL 等のポインタを参照してアドレス計算を行い、temp や pointer は Python側で静的にアドレスを計算する
+  - 
+
