@@ -13,5 +13,7 @@ VMコードをアセンブリに変換する変換器を実装する
   - writeArithmetic() で算術・論理演算を実装
   - writePushPop() でスタックと各種セグメント間のデータのやり取りを実装する
   - local や argument は LCL 等のポインタを参照してアドレス計算を行い、temp や pointer は Python側で静的にアドレスを計算する
-  - 
+
+- vm_translator.py
+  - parserでコマンドを抽出し, 各種類別でcodeで書き込む
 
