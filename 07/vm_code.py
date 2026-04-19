@@ -129,8 +129,11 @@ class CodeWriter:
                 elif segment=='that':
                     asm+=("@THAT\n")
                 asm+=(
-                    "A=M+D\n"
+                    "A=M\n"
+                    "D=D+A\n"
+                    "A=D\n"
                     "D=M\n"
+                    #RAM[sp]<-D
                     "@SP\n"
                     "A=M\n"
                     "M=D\n"
